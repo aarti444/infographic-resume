@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aarti Mahajan — Visual Story</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ember: #D4621A;
+    --ocean: #1A6B8A;
+    --night: #1E1E2E;
+    --slate: #4A4A58;
+    --warm: #F5EDE4;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #ddd8d0;
+    font-family: 'Outfit', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+
+  .card {
+    width: 760px;
+    background: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 5px;
+    background: linear-gradient(180deg, var(--ember), var(--ocean), var(--night));
+  }
+
+  .inner {
+    padding: 28px 32px 22px 36px;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 22px;
+  }
+
+  .header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--night);
+  }
+
+  .header .tag {
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--ember);
+    font-weight: 600;
+  }
+
+  /* ── VISUAL AREA ── */
+  .visual-area {
+    display: flex;
+    gap: 36px;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  /* Rings */
+  .rings-box {
+    position: relative;
+    width: 260px;
+    height: 260px;
+    flex-shrink: 0;
+  }
+
+  .ring {
+    position: absolute;
+    border-radius: 50%;
+    border-style: solid;
+  }
+
+  .r3 {
+    width: 230px; height: 230px;
+    border-width: 2.5px;
+    border-color: var(--night);
+    opacity: 0.2;
+    top: 15px; left: 15px;
+    animation: ringExpand 1.8s ease-out 0.6s both;
+  }
+
+  .r2 {
+    width: 165px; height: 165px;
+    border-width: 2.5px;
+    border-color: var(--ocean);
+    opacity: 0.38;
+    top: 47px; left: 47px;
+    animation: ringExpand 1.5s ease-out 0.35s both;
+  }
+
+  .r1 {
+    width: 100px; height: 100px;
+    border-width: 2.5px;
+    border-color: var(--ember);
+    opacity: 0.55;
+    top: 80px; left: 80px;
+    animation: ringExpand 1.2s ease-out 0.15s both;
+  }
+
+  .core {
+    position: absolute;
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: var(--ember);
+    top: 102px; left: 102px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: corePulse 1s ease-out 0.05s both;
+    box-shadow: 0 0 0 7px rgba(212,98,26,0.12);
+  }
+
+  .core span {
+    font-size: 8px;
+    font-weight: 700;
+    color: var(--white);
+    text-align: center;
+    line-height: 1.25;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+
+  @keyframes ringExpand {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); }
+  }
+
+  @keyframes corePulse {
+    0% { transform: scale(0); opacity: 0; }
+    60% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  .ring-label {
+    position: absolute;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .rl-inner { bottom: 6px; left: 72px; color: var(--ember); }
+  .rl-mid { top: 38px; right: -6px; color: var(--ocean); }
+  .rl-outer { top: 0; left: 30px; color: var(--night); opacity: 0.55; }
+
+  /* ── GROWTH METRICS ── */
+  .growth-metrics {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .metric {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    animation: slideIn 0.4s ease-out both;
+  }
+
+  .metric:nth-child(1) { animation-delay: 0.3s; }
+  .metric:nth-child(2) { animation-delay: 0.45s; }
+  .metric:nth-child(3) { animation-delay: 0.6s; }
+  .metric:nth-child(4) { animation-delay: 0.75s; }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(12px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .metric-nums {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 145px;
+    justify-content: flex-end;
+  }
+
+  .m-from {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--slate);
+    opacity: 0.45;
+  }
+
+  .m-arrow {
+    font-size: 18px;
+    color: var(--ember);
+    font-weight: 300;
+  }
+
+  .m-to {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .metric:nth-child(1) .m-to { color: var(--ember); }
+  .metric:nth-child(2) .m-to { color: var(--ocean); }
+  .metric:nth-child(3) .m-to { color: var(--night); }
+  .metric:nth-child(4) .m-to { color: var(--ocean); }
+
+  .m-label {
+    font-size: 12px;
+    color: var(--slate);
+    line-height: 1.35;
+    font-weight: 400;
+  }
+
+  .m-label strong {
+    color: var(--night);
+    font-weight: 600;
+  }
+
+  .m-label .m-org {
+    font-size: 10px;
+    color: var(--slate);
+    opacity: 0.7;
+  }
+
+  /* ── STORY ARC ── */
+  .arc-row {
+    display: flex;
+    gap: 0;
+    margin-bottom: 16px;
+    border-top: 1px solid #eee;
+    padding-top: 16px;
+  }
+
+  .arc-ch {
+    flex: 1;
+    padding: 0 14px;
+    border-left: 4px solid transparent;
+  }
+
+  .arc-ch:nth-child(1) { border-left-color: var(--ember); padding-left: 12px; }
+  .arc-ch:nth-child(2) { border-left-color: var(--ocean); }
+  .arc-ch:nth-child(3) { border-left-color: var(--night); }
+
+  .arc-phase {
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .arc-ch:nth-child(1) .arc-phase { color: var(--ember); }
+  .arc-ch:nth-child(2) .arc-phase { color: var(--ocean); }
+  .arc-ch:nth-child(3) .arc-phase { color: var(--night); }
+
+  .arc-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--night);
+    line-height: 1.25;
+    margin-bottom: 6px;
+  }
+
+  .arc-orgs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .arc-org {
+    font-size: 10px;
+    font-weight: 500;
+    padding: 3px 8px;
+    background: var(--warm);
+    color: var(--slate);
+    border-radius: 2px;
+  }
+
+  .arc-org.now {
+    background: var(--night);
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  /* ── FOOTER ── */
+  .footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-top: 1px solid #eee;
+    padding-top: 12px;
+  }
+
+  .geo {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+
+  .geo-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--night);
+    font-weight: 700;
+    margin-right: 4px;
+  }
+
+  .geo-pip {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .geo-pip .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--warm);
+    border: 1.5px solid #aaa;
+  }
+
+  .geo-pip.now .dot {
+    background: var(--night);
+    border-color: var(--night);
+    box-shadow: 0 0 0 3px rgba(30,30,46,0.15);
+  }
+
+  .geo-pip .name {
+    font-size: 11px;
+    color: var(--night);
+    font-weight: 500;
+  }
+
+  .geo-pip.now .name {
+    font-weight: 700;
+  }
+
+  .geo-arr {
+    font-size: 11px;
+    color: var(--slate);
+    opacity: 0.5;
+  }
+
+  .creds-col {
+    text-align: right;
+  }
+
+  .cred-line {
+    font-size: 10px;
+    color: var(--night);
+    font-weight: 500;
+    line-height: 1.7;
+  }
+
+  .cred-sq {
+    display: inline-block;
+    width: 7px; height: 7px;
+    border-radius: 1px;
+    vertical-align: middle;
+    margin-right: 4px;
+  }
+
+  .sq-1 { background: var(--ember); }
+  .sq-2 { background: var(--ocean); }
+  .sq-3 { background: var(--night); }
+
+  .ai-stamp {
+    text-align: right;
+    margin-top: 8px;
+    padding-top: 5px;
+    border-top: 1px solid #f4f1ec;
+    font-size: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #aaa;
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="inner">
+
+    <div class="header">
+      <h1>Aarti Mahajan</h1>
+      <span class="tag">Operations Leader · 12+ Years</span>
+    </div>
+
+    <div class="visual-area">
+
+      <div class="rings-box">
+        <div class="ring r3"></div>
+        <div class="ring r2"></div>
+        <div class="ring r1"></div>
+        <div class="core"><span>Systems<br>Builder</span></div>
+        <span class="ring-label rl-inner">Brands</span>
+        <span class="ring-label rl-mid">Energy &amp; Ag</span>
+        <span class="ring-label rl-outer">Programs</span>
+      </div>
+
+      <div class="growth-metrics">
+        <div class="metric">
+          <div class="metric-nums">
+            <span class="m-from">3</span>
+            <span class="m-arrow">→</span>
+            <span class="m-to">11</span>
+          </div>
+          <div class="m-label"><strong>Solar mini-grid sites</strong><br><span class="m-org">NXT Grid</span></div>
+        </div>
+
+        <div class="metric">
+          <div class="metric-nums">
+            <span class="m-from">1,200</span>
+            <span class="m-arrow">→</span>
+            <span class="m-to">4,000+</span>
+          </div>
+          <div class="m-label"><strong>Farmers across five regions</strong><br><span class="m-org">NEI Ltd</span></div>
+        </div>
+
+        <div class="metric">
+          <div class="metric-nums">
+            <span class="m-from">3</span>
+            <span class="m-arrow">→</span>
+            <span class="m-to">17</span>
+          </div>
+          <div class="m-label"><strong>Field operations staff</strong><br><span class="m-org">NEI Ltd</span></div>
+        </div>
+
+        <div class="metric">
+          <div class="metric-nums">
+            <span class="m-from"></span>
+            <span class="m-arrow"></span>
+            <span class="m-to">10+</span>
+          </div>
+          <div class="m-label"><strong>SME partners monitored</strong><br><span class="m-org">MEDA</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="arc-row">
+      <div class="arc-ch">
+        <div class="arc-phase">Foundation</div>
+        <div class="arc-title">Brand Operations</div>
+        <div class="arc-orgs">
+          <span class="arc-org">Unilever</span>
+          <span class="arc-org">Pizza Express</span>
+        </div>
+      </div>
+      <div class="arc-ch">
+        <div class="arc-phase">Pivot &amp; Scale</div>
+        <div class="arc-title">Energy &amp; Ag Field Ops</div>
+        <div class="arc-orgs">
+          <span class="arc-org">EarthSpark</span>
+          <span class="arc-org">Devergy</span>
+          <span class="arc-org">NEI Ltd</span>
+          <span class="arc-org now">NXT Grid</span>
+        </div>
+      </div>
+      <div class="arc-ch">
+        <div class="arc-phase">Systems</div>
+        <div class="arc-title">Grant &amp; Program Infrastructure</div>
+        <div class="arc-orgs">
+          <span class="arc-org">MEDA</span>
+          <span class="arc-org">EnAccess</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-row">
+      <div class="geo">
+        <span class="geo-label">Across</span>
+        <span class="geo-pip"><span class="dot"></span><span class="name">India</span></span>
+        <span class="geo-arr">›</span>
+        <span class="geo-pip"><span class="dot"></span><span class="name">Haiti</span></span>
+        <span class="geo-arr">›</span>
+        <span class="geo-pip"><span class="dot"></span><span class="name">Tanzania</span></span>
+        <span class="geo-arr">›</span>
+        <span class="geo-pip"><span class="dot"></span><span class="name">Uganda</span></span>
+        <span class="geo-arr">›</span>
+        <span class="geo-pip now"><span class="dot"></span><span class="name">Italy / Nigeria</span></span>
+      </div>
+      <div class="creds-col">
+        <div class="cred-line"><span class="cred-sq sq-1"></span>PMP® Certified 2024</div>
+        <div class="cred-line"><span class="cred-sq sq-2"></span>UPenn Social Impact Strategy 2025</div>
+        <div class="cred-line"><span class="cred-sq sq-3"></span>PGDBA · BCA</div>
+      </div>
+    </div>
+
+    <div class="ai-stamp">Designed with AI</div>
+
+  </div>
+</div>
+
+</body>
+</html>
